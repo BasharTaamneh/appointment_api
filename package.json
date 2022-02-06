@@ -1,0 +1,30 @@
+{
+  "name": "appointment_api",
+  "version": "1.0.0",
+  "description": "implement appointment booking system that will allow them to book their appointment ahead of time before going to the service provider.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BasharTaamneh/appointment_api.git"
+  },
+  "keywords": [],
+  "author": "BasharTaamneh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BasharTaamneh/appointment_api/issues"
+  },
+  "homepage": "https://github.com/BasharTaamneh/appointment_api#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.17.2",
+    "express-unless": "^1.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.2.0",
+    "mongoose-unique-validator": "^3.0.0",
+    "nodemon": "^2.0.15"
+  }
+}

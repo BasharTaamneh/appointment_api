@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken')
 
+// check for authorized users
 function authenticateToken(req, res, next) {
     const authHeader = req.headers["authorization"];
     const token = authHeader && authHeader.split(' ')[1];
@@ -14,14 +15,13 @@ function authenticateToken(req, res, next) {
     });
 };
 
-function generateAccessToken(id, username, account_type) {
-
+// generate AccessTokens for users
+function generateAccessToken(id, username, account_type, email) {
     return jwt.sign({
-
+        email: email,
         username: username,
         account_type: account_type,
         id: id,
-
     },
         `${process.env.JWT_SCERETKEY}`,
         {

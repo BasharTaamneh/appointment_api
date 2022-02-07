@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
@@ -6,7 +7,7 @@ const dbConfig = require("./config/db.config");
 const auth = require("./middlewares/auth.js");
 const errors = require("./middlewares/errors.js");
 const unless = require("express-unless");
-
+const bodyParser = require('body-parser');
 // connect to mongodb
 
 /**
@@ -46,10 +47,17 @@ app.use(
     })
 );
 
-app.use(express.json());
+// parse application/json
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// use static images
+app.use("/images", express.static("public/uploads/images"))
 
 // initialize routes
 app.use("/users", require("./routes/user.routes"));
+app.use("/stores", require("./routes/store.routes"));
+app.use("/appointments", require("./routes/appointment.routes"));
 
 // middleware for error responses
 app.use(errors.errorHandler);

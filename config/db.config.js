@@ -1,5 +1,4 @@
+//  mongodb config
 module.exports = {
-    db: 'mongodb://localhost/test'
+    db: `${process.env.MONGODB_CONFIG}`
 };
-
-

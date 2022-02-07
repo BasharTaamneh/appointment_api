@@ -2,28 +2,35 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 const uniqueValidator = require('mongoose-unique-validator');
-//  mongoose user model schema
-const userSchema = new Schema({
-    username: {
-        type: String,
-        required: true,
-        maxlength: 64,
-        unique: true,
-    },
-    email: {
+
+//  mongoose store model schema
+const storeSchema = new Schema({
+    storename: {
         type: String,
         unique: true,
         required: true,
         maxlength: 128,
     },
-    password: {
-        type: String,
-        required: true
-    },
-    account_type: {
+    location: {
         type: String,
         required: true,
-        maxlength: 16,
+        maxlength: 256,
+    },
+    description: {
+        type: String,
+        required: true,
+    },
+    store_type: {
+        type: String,
+        default: 'Not assigned',
+    },
+    img: {
+        type: String,
+        default: 'images/placeholder.png',
+    },
+    owner: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
     },
     created_at: {
         type: Date,
@@ -32,18 +39,17 @@ const userSchema = new Schema({
 });
 
 // customize schema returned Object
-userSchema.set("toJSON", {
+storeSchema.set("toJSON", {
     transform: (document, returnedObject) => {
         returnedObject.id = returnedObject._id.toString();
         delete returnedObject._id;
         delete returnedObject.__v;
-        delete returnedObject.password
     }
 });
 
-userSchema.plugin(uniqueValidator);
+storeSchema.plugin(uniqueValidator);
 
-const User = mongoose.model("user", userSchema);
+const Store = mongoose.model("store", storeSchema);
 
-module.exports = User;
+module.exports = Store;
 

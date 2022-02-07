@@ -2,28 +2,28 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 const uniqueValidator = require('mongoose-unique-validator');
-//  mongoose user model schema
-const userSchema = new Schema({
-    username: {
+
+//  mongoose appointment model schema
+const appointmentSchema = new Schema({
+    storename: {
+        type: mongoose.Schema.Types.String,
+        required: true,
+    },
+    user: {
+        type: mongoose.Schema.Types.String,
+        required: true,
+    },
+    status: {
+        type: String,
+        default: 'waiting',
+    },
+    date: {
+        type: Date,
+        required: true,
+    },
+    time: {
         type: String,
         required: true,
-        maxlength: 64,
-        unique: true,
-    },
-    email: {
-        type: String,
-        unique: true,
-        required: true,
-        maxlength: 128,
-    },
-    password: {
-        type: String,
-        required: true
-    },
-    account_type: {
-        type: String,
-        required: true,
-        maxlength: 16,
     },
     created_at: {
         type: Date,
@@ -32,18 +32,17 @@ const userSchema = new Schema({
 });
 
 // customize schema returned Object
-userSchema.set("toJSON", {
+appointmentSchema.set("toJSON", {
     transform: (document, returnedObject) => {
         returnedObject.id = returnedObject._id.toString();
         delete returnedObject._id;
         delete returnedObject.__v;
-        delete returnedObject.password
     }
 });
 
-userSchema.plugin(uniqueValidator);
+appointmentSchema.plugin(uniqueValidator);
 
-const User = mongoose.model("user", userSchema);
+const Appointment = mongoose.model("appointment", appointmentSchema);
 
-module.exports = User;
+module.exports = Appointment;
 

@@ -41,6 +41,7 @@ auth.authenticateToken.unless = unless;
 app.use(
     auth.authenticateToken.unless({
         path: [
+            { url: "/", methods: ["GET"] },
             { url: "/users/login", methods: ["POST"] },
             { url: "/users/register", methods: ["POST"] },
         ],
@@ -61,6 +62,11 @@ app.use("/appointments", require("./routes/appointment.routes"));
 
 // middleware for error responses
 app.use(errors.errorHandler);
+
+// api routing
+app.get('/', (req, res) => {
+    res.send('Ready To Routing');
+});
 
 // listen for requests
 app.listen(process.env.port || 3000, function () {

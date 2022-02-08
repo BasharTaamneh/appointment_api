@@ -3,13 +3,12 @@
   "version": "1.0.0",
   "description": "* appointment booking system API that will allow user's to book their appointment ahead of time before going to the service provider.",
   "main": "index.js",
+  "engines": {
+    "node": "17.4.0"
+  },
   "scripts": {
-    "dev": "react-scripts start",
-    "start": "serve -s build",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "heroku-postbuild": "npm run build"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js  "
   },
   "repository": {
     "type": "git",

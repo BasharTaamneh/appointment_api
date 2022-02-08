@@ -4,7 +4,8 @@
   "description": "* appointment booking system API that will allow user's to book their appointment ahead of time before going to the service provider.",
   "main": "index.js",
   "engines": {
-    "node": "17.4.0"
+    "node": "17.4.0",
+    "npm": "8.3.1"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

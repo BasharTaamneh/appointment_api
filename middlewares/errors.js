@@ -16,8 +16,8 @@ function errorHandler(err, req, res, next) {
         return res.status(401).json({ message: "Token not valid" });
     }
 
-    // default to 500 server errors
-    return res.status(500).json({ message: err.message });
+    // default to 400 server errors
+    return res.status(400).json({ message: err.message });
 }
 
 module.exports = {

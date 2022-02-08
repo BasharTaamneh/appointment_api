@@ -70,6 +70,6 @@ app.get('/', (req, res) => {
 });
 
 // listen for requests
-app.listen(process.env.PORT || 3000, () => {
+app.listen(process.env.PORT || 8000, () => {
     console.log("Ready to Go!");
 });

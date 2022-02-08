@@ -42,7 +42,7 @@ auth.authenticateToken.unless = unless;
 app.use(
     auth.authenticateToken.unless({
         path: [
-            { url: "/", methods: ["GET"] },
+            { url: "/" },
             { url: "/users/login", methods: ["POST"] },
             { url: "/users/register", methods: ["POST"] },
         ],

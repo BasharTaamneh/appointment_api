@@ -4,7 +4,7 @@
   "description": "appointment booking system that will allow users to book their appointment ahead of time before going to the service provider.",
   "main": "app.js",
   "engines": {
-    "node": "12.11.1"
+    "node": "17.4.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

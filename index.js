@@ -3,11 +3,12 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const dbConfig = require("./config/db.config");
-
+const cors = require('cors');
 const auth = require("./middlewares/auth.js");
 const errors = require("./middlewares/errors.js");
 const unless = require("express-unless");
 const bodyParser = require('body-parser');
+app.use(cors());
 // connect to mongodb
 
 /**

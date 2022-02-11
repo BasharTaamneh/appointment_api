@@ -72,3 +72,18 @@ exports.userDelete = (req, res, next) => {
         });
     });
 };
+
+// get user profile request controller
+exports.userProfile = (req, res, next) => {
+    const user_id = req.user.id
+    userServices.userProfile({user_id}, (error, result) => {
+        if (error) {
+            return next(error);
+        }
+        return res.status(200).send({
+            message: "success",
+            data: result,
+        });
+    })
+
+}

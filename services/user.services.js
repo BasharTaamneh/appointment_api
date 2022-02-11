@@ -56,6 +56,16 @@ async function register(params, callback) {
         .catch((error) => {
             return callback(error);
         });
+};
+
+async function userProfile(params, callback){
+    User.findOne({_id: params.user_id})
+        .then((response) => {
+            return callback(null, response);
+        })
+        .catch((error) => {
+            return callback(error);
+        });
 }
 
 //  handle Update user request
@@ -140,6 +150,7 @@ async function userDelete(params, callback) {
 module.exports = {
     register,
     login,
+    userProfile,
     userUpdate,
     userDelete
 }

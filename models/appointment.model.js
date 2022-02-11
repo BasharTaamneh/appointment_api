@@ -15,7 +15,7 @@ const appointmentSchema = new Schema({
     },
     status: {
         type: String,
-        default: 'waiting',
+        default: 'pending',
     },
     date: {
         type: Date,

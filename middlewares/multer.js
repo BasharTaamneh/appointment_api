@@ -9,7 +9,8 @@ let storage = multer.diskStorage({
     },
     filename: function (req, file, callback) {
         let name = path.basename(file.originalname).replace(" ", "_");
-        callback(null, req.body.storename + '-' + name.slice(0, name.indexOf(".")).replace(" ", "_") + '-' + req.user.id + path.extname(file.originalname));
+        let username = req.user.username.replace(" ", "_")
+        callback(null, username + '-' + name.slice(0, name.indexOf(".")).replace(" ", "_") + '-' + req.user.id + path.extname(file.originalname));
     },
 });
 

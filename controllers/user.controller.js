@@ -14,7 +14,7 @@ exports.register = (req, res, next) => {
             return next(error);
         }
         return res.status(200).send({
-            message: "Success",
+            message: "success",
             data: results,
         });
     });
@@ -76,7 +76,7 @@ exports.userDelete = (req, res, next) => {
 // get user profile request controller
 exports.userProfile = (req, res, next) => {
     const user_id = req.user.id
-    userServices.userProfile({user_id}, (error, result) => {
+    userServices.userProfile({ user_id }, (error, result) => {
         if (error) {
             return next(error);
         }

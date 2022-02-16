@@ -17,7 +17,7 @@ exports.createAppointment = (req, res, next) => {
                 return next(error);
             }
             return res.status(200).send({
-                message: "Success",
+                message: "success",
                 data: results,
             });
         });
@@ -31,7 +31,7 @@ exports.getuserAppointments = (req, res, next) => {
             return next(error);
         }
         return res.status(200).send({
-            message: "Success",
+            message: "success",
             data: results,
         });
     });
@@ -39,13 +39,13 @@ exports.getuserAppointments = (req, res, next) => {
 
 // get store Appointments list request controller
 exports.getstoreAppointments = (req, res, next) => {
-    const  storename  = req.query.storename
+    const storename = req.query.storename
     appointmentServices.getstoreAppointments({ storename }, (error, results) => {
         if (error) {
             return next(error);
         }
         return res.status(200).send({
-            message: "Success",
+            message: "success",
             data: results,
         });
     });
@@ -64,7 +64,7 @@ exports.updateAppointment = (req, res, next) => {
             return next(error);
         }
         return res.status(200).send({
-            message: "Success",
+            message: "success",
             data: results,
         });
     })

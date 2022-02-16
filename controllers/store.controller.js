@@ -22,7 +22,7 @@ exports.createStore = (req, res, next) => {
             return next(error);
         }
         return res.status(200).send({
-            message: "Success",
+            message: "success",
             data: results,
         });
     });
@@ -38,7 +38,7 @@ exports.getuserStores = (req, res, next) => {
             return next(error);
         }
         return res.status(200).send({
-            message: "Success",
+            message: "success",
             data: results,
         });
     });
@@ -46,13 +46,13 @@ exports.getuserStores = (req, res, next) => {
 
 // get & search stores list request controller
 exports.searchStoreslist = (req, res, next) => {
-    const  search_key  = req.query.search_key;
-    storeServices.searchStoreslist({search_key}, (error, results) => {
+    const search_key = req.query.search_key;
+    storeServices.searchStoreslist({ search_key }, (error, results) => {
         if (error) {
             return next(error);
         }
         return res.status(200).send({
-            message: "Success",
+            message: "success",
             data: results,
         });
     });
@@ -92,7 +92,7 @@ exports.deleteStore = (req, res, next) => {
             return next(error);
         }
         return res.status(200).send({
-            message: "Success",
+            message: "success",
             data: results,
         });
     });

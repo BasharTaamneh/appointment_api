@@ -58,8 +58,8 @@ async function register(params, callback) {
         });
 };
 
-async function userProfile(params, callback){
-    User.findOne({_id: params.user_id})
+async function userProfile(params, callback) {
+    User.findOne({ _id: params.user_id })
         .then((response) => {
             return callback(null, response);
         })
@@ -72,6 +72,11 @@ async function userProfile(params, callback){
 async function userUpdate(params, callback) {
     const user_id = params.user.id
     const password = params.oldPassword
+    const username = params.username
+    const email = params.email
+    const newpassword = params.password
+
+
     if (params.oldPassword == undefined) {
         return callback({
             message: "Current Password Required"
@@ -83,9 +88,13 @@ async function userUpdate(params, callback) {
             message: "Current Password Incorrect !"
         });
     };
-    User.findByIdAndUpdate(user_id, params)
+    User.findByIdAndUpdate(user_id, {
+        username: username,
+        email: email,
+        password: newpassword
+    })
         .then(async () => {
-            const userupdated = await User.findOne({ user_id })
+            const userupdated = await User.findOne({_id: user_id })
             return callback(null, { ...userupdated.toJSON() });
         })
         .catch((error) => {

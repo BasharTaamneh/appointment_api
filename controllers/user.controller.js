@@ -36,10 +36,17 @@ exports.login = (req, res, next) => {
 
 // Update user request controller
 exports.userUpdate = (req, res, next) => {
-    const { username, password, email, oldPassword } = req.body;
     const user = req.user
-    const salt = bcrypt.genSaltSync(10);
-    req.body.password = bcrypt.hashSync(password, salt);
+    const username = req.body.username
+    const password = req.body.password
+    const email = req.body.email
+    const oldPassword = req.body.oldPassword
+
+    if (req.body.password) {
+        const salt = bcrypt.genSaltSync(10);
+        req.body.password = bcrypt.hashSync(password, salt)
+    };
+
 
     userServices.userUpdate({
         user,

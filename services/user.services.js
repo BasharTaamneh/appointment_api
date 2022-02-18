@@ -82,7 +82,7 @@ async function userUpdate(params, callback) {
             message: "Current Password Required"
         });
     };
-    const user = await User.findOne({ user_id })
+    const user = await User.findOne({ _id: user_id  })
     if (!bcrypt.compareSync(password, user.password)) {
         return callback({
             message: "Current Password Incorrect !"
@@ -113,7 +113,7 @@ async function userDelete(params, callback) {
     const user_id = params.user_id
     const password = params.oldPassword
     const username = params.username
-    const user = await User.findOne({ user_id })
+    const user = await User.findOne({ _id: user_id  })
     if (!bcrypt.compareSync(password, user.password)) {
         return callback({
             message: "Current Password Incorrect !"

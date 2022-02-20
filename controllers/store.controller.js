@@ -46,8 +46,7 @@ exports.getuserStores = (req, res, next) => {
 
 // get & search stores list request controller
 exports.searchStoreslist = (req, res, next) => {
-    const search_key = req.query.search_key;
-    storeServices.searchStoreslist({ search_key }, (error, results) => {
+    storeServices.searchStoreslist(req.body, (error, results) => {
         if (error) {
             return next(error);
         }

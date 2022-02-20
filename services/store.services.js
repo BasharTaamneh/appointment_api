@@ -41,13 +41,7 @@ async function getuserStores(params, callback) {
 
 //  handle search stores list request
 async function searchStoreslist(params, callback) {
-    if (params.search_key == undefined) {
-        return callback({
-            message: "search_key Required"
-        });
-    };
-    const key = params.search_key
-    Store.find({ storename: { $regex: key } }).then((response) => {
+    Store.find({}).then((response) => {
         return callback(null, response);
     })
         .catch((error) => {

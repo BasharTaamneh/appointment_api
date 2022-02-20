@@ -2,7 +2,10 @@ const jwt = require('jsonwebtoken')
 
 // check for authorized users
 function authenticateToken(req, res, next) {
-    if(!(req.url.startsWith("/images"))){
+    if (req.url.startsWith("/images")){
+        next();
+    }
+    else{
         const authHeader = req.headers["authorization"];
         const token = authHeader && authHeader.split(' ')[1];
         jwt.verify(token, `${process.env.JWT_SCERETKEY}`, (err, user) => {
@@ -15,7 +18,6 @@ function authenticateToken(req, res, next) {
             next();
         });
     }
-    next();
 };
 
 // generate AccessTokens for users

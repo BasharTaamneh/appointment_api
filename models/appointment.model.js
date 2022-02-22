@@ -21,10 +21,6 @@ const appointmentSchema = new Schema({
         type: Date,
         required: true,
     },
-    time: {
-        type: String,
-        required: true,
-    },
     created_at: {
         type: Date,
         default: Date.now()

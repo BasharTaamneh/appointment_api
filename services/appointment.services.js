@@ -17,11 +17,7 @@ async function createAppointment(params, callback) {
             message: "user Required"
         });
     }
-    else if (params.time == undefined) {
-        return callback({
-            message: "time Required"
-        });
-    };
+
     const appointment = new Appointment(params);
     appointment.save()
         .then((response) => {

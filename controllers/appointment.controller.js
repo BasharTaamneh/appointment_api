@@ -2,13 +2,12 @@ const appointmentServices = require('../services/appointment.services')
 
 //  create appointments request controller
 exports.createAppointment = (req, res, next) => {
-    const { storename, date, time, status } = req.body;
+    const { storename, date, status } = req.body;
     const user = req.user.username
     appointmentServices.createAppointment(
         {
             storename,
             date,
-            time,
             status,
             user
         }

@@ -76,15 +76,17 @@ async function deleteStore(params, callback) {
     }
     const id = params.store_id
     try {
-        const store = await Store.findOne({ _id: id })
-        let path
+        const store = await Store.findOne({ id })
+        let imgpath
         if (store) {
-            path = './public/uploads/' + store.img
+            imgpath = './public/uploads/' + store.img
         }
         if (path) {
             fs.unlinkSync(path)
+            
             //store file removed from file system
         }
+        
     } catch (error) {
         return callback(error);
     }

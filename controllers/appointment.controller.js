@@ -38,8 +38,8 @@ exports.getuserAppointments = (req, res, next) => {
 
 // get store Appointments list request controller
 exports.getstoreAppointments = (req, res, next) => {
-    const { storename } = req.body
-    appointmentServices.getstoreAppointments(req.body, (error, results) => {
+    const storename = req.query.storename
+    appointmentServices.getstoreAppointments({ storename }, (error, results) => {
         if (error) {
             return next(error);
         }

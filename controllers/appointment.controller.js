@@ -52,11 +52,10 @@ exports.getstoreAppointments = (req, res, next) => {
 
 // update Appointment request controller
 exports.updateAppointment = (req, res, next) => {
-    const { date, time, appointment_id, status } = req.body;
+    const { date, appointment_id, status } = req.body;
     appointmentServices.updateAppointment({
         appointment_id,
         date,
-        time,
         status
     }, (error, results) => {
         if (error) {

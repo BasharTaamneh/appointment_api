@@ -68,3 +68,16 @@ exports.updateAppointment = (req, res, next) => {
         });
     })
 };
+
+exports.deleteAppointment = (req, res, next) => {
+    const { appointment_id } = req.body;
+    appointmentServices.deleteAppointment(req.body , (error, results) => {
+        if (error) {
+            return next(error);
+        }
+        return res.status(200).send({
+            message: "success",
+            data: results,
+        });
+    })
+}

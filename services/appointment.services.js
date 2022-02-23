@@ -72,10 +72,25 @@ async function updateAppointment(params, callback) {
         });
 }
 
+async function deleteAppointment(params, callback){
+    if (params.appointment_id == undefined) {
+        return callback({
+            message: "appointment_id Required"
+        });
+    };
+    const id = params.appointment_id;
+    Appointment.deleteOne({ _id: id }).then((response) => {
+        return callback(null, response);
+    })
+        .catch((error) => {
+            return callback(error);
+        });
+}
 
 module.exports = {
     createAppointment,
     getuserAppointments,
     getstoreAppointments,
-    updateAppointment
+    updateAppointment,
+    deleteAppointment
 }
